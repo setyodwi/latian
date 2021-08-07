@@ -1,0 +1,555 @@
+  Memory usage: 20%               IP address for docker0:         172.17.0.1
+  Swap usage:   0%                IP address for br-42c4d2644007: 172.27.0.1
+  Processes:    125               IP address for br-bb7c6e6ff6b4: 172.22.0.1
+
+ * Introducing self-healing high availability clusters in MicroK8s.
+   Simple, hardened, Kubernetes for production, from RaspberryPi to DC.
+
+     https://microk8s.io/high-availability
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+0 packages can be updated.
+0 of these updates are security updates.
+
+
+Last login: Thu Mar  4 06:26:36 2021 from 192.168.102.109
+setyo@ldap:~$ sudo nano /etc/default/slapd
+[sudo] password for setyo:
+setyo@ldap:~$ cd /etc/ldap
+setyo@ldap:/etc/ldap$ ls
+ldap.conf  sasl2  schema  slapd.conf  slapd.d
+setyo@ldap:/etc/ldap$ sudo nano /etc/ldap/slapd.conf
+setyo@ldap:/etc/ldap$ sudo nano /usr/share/slapd/slapd.conf
+setyo@ldap:/etc/ldap$ sudo nano /etc/ldap/slapd.conf
+setyo@ldap:/etc/ldap$ sudo nano /etc/default/slapd
+setyo@ldap:/etc/ldap$ cd /etc/ldap
+setyo@ldap:/etc/ldap$ ls
+ldap.conf  sasl2  schema  slapd.conf  slapd.d
+setyo@ldap:/etc/ldap$
+setyo@ldap:/etc/ldap$
+setyo@ldap:/etc/ldap$ cd /etc/ldap/slapd.d
+setyo@ldap:/etc/ldap/slapd.d$ ls
+'cn=config'  'cn=config.ldif'
+setyo@ldap:/etc/ldap/slapd.d$ sudo nano /usr/share/slapd/slapd.conf
+setyo@ldap:/etc/ldap/slapd.d$ sudo nano /etc/default/slapd
+setyo@ldap:/etc/ldap/slapd.d$ sudo nano /usr/share/slapd/slapd.con                f
+setyo@ldap:/etc/ldap/slapd.d$ sudo nano /etc/default/slapd
+setyo@ldap:/etc/ldap/slapd.d$ sudo nano /etc/ldap/slapd.conf
+setyo@ldap:/etc/ldap/slapd.d$ sudo nano /etc/default/slapd
+setyo@ldap:/etc/ldap/slapd.d$ clear
+setyo@ldap:/etc/ldap/slapd.d$ slaptest
+6040b6b2 ldif_read_file: Permission denied for "/etc/ldap/slapd.d/cn=config.ldif"
+slaptest: bad configuration file!
+setyo@ldap:/etc/ldap/slapd.d$ cd
+setyo@ldap:~$ slaptest
+6040b6b6 ldif_read_file: Permission denied for "/etc/ldap/slapd.d/cn=config.ldif"
+slaptest: bad configuration file!
+setyo@ldap:~$ sudo slaptest
+config file testing succeeded
+setyo@ldap:~$ sudo slaptest -f /etc/ldap/slapd.conf
+6040b6fe /etc/ldap/slapd.conf: line 30: <backend> failed init (@BACKEND@)!
+slaptest: bad configuration file!
+setyo@ldap:~$ sudo nano /etc/ldap/slapd.conf
+setyo@ldap:~$ sudo slaptest -f /etc/ldap/slapd.conf
+6040b73a /etc/ldap/slapd.conf: line 63: unknown directive <cachrsize> inside backend database definition.
+slaptest: bad configuration file!
+setyo@ldap:~$ sudo slaptest -f /etc/ldap/slapd.conf
+6040b740 /etc/ldap/slapd.conf: line 63: unknown directive <cachrsize> inside backend database definition.
+slaptest: bad configuration file!
+setyo@ldap:~$ sudo nano /etc/ldap/slapd.conf
+setyo@ldap:~$ sudo slaptest -f /etc/ldap/slapd.conf
+/etc/ldap/slapd.conf: line 79: index type "rq" undefined
+slaptest: bad configuration file!
+setyo@ldap:~$ sudo nano /etc/ldap/slapd.conf
+setyo@ldap:~$ sudo slaptest -f /etc/ldap/slapd.conf
+6040b7a0 /etc/ldap/slapd.conf: line 98: rootdn is always granted unlimited privileges.
+6040b7a0 /etc/ldap/slapd.conf: line 115: rootdn is always granted unlimited privileges.
+config file testing succeeded
+setyo@ldap:~$ cd /etc/ldap
+setyo@ldap:/etc/ldap$ ls
+ldap.conf  sasl2  schema  slapd.conf  slapd.d
+setyo@ldap:/etc/ldap$ cd /etc/ldap/sasl2
+setyo@ldap:/etc/ldap/sasl2$ ls
+setyo@ldap:/etc/ldap/sasl2$ cd
+setyo@ldap:~$ cd /etc/hosts
+-bash: cd: /etc/hosts: Not a directory
+setyo@ldap:~$ cd
+setyo@ldap:~$ cd /etc
+setyo@ldap:/etc$ ls
+acpi                           initramfs-tools          protocols
+adduser.conf                   inputrc                  python
+alternatives                   iproute2                 python2.7
+apm                            iscsi                    python3
+apparmor                       issue                    python3.6
+apparmor.d                     issue.net                qemu
+apport                         java-11-openjdk          rc0.d
+apt                            kernel                   rc1.d
+at.deny                        kernel-img.conf          rc2.d
+bash.bashrc                    landscape                rc3.d
+bash_completion                ldap                     rc4.d
+bash_completion.d              ld.so.cache              rc5.d
+bindresvport.blacklist         ld.so.conf               rc6.d
+binfmt.d                       ld.so.conf.d             rcS.d
+byobu                          legal                    resolv.conf
+ca-certificates                libaudit.conf            rmt
+ca-certificates.conf           libnl-3                  rpc
+ca-certificates.conf.dpkg-old  locale.alias             rsyslog.conf
+calendar                       locale.gen               rsyslog.d
+cloud                          localtime                screenrc
+console-setup                  logcheck                 securetty
+containerd                     login.defs               security
+cron.d                         logrotate.conf           selinux
+cron.daily                     logrotate.d              sensors3.conf
+cron.hourly                    lsb-release              sensors.d
+cron.monthly                   ltrace.conf              services
+crontab                        lvm                      shadow
+cron.weekly                    machine-id               shadow-
+cryptsetup-initramfs           magic                    shells
+crypttab                       magic.mime               skel
+dbus-1                         mailcap                  slim.conf
+debconf.conf                   mailcap.order            sos.conf
+debian_version                 manpath.config           ssh
+default                        mdadm                    ssl
+deluser.conf                   mime.types               subgid
+depmod.d                       mke2fs.conf              subgid-
+dhcp                           modprobe.d               subuid
+dnsmasq.d                      modules                  subuid-
+dnsmasq.d-available            modules-load.d           sudoers
+docker                         mtab                     sudoers.d
+dpkg                           nanorc                   sysctl.conf
+environment                    netplan                  sysctl.d
+ethertypes                     network                  systemd
+fonts                          networkd-dispatcher      terminfo
+fstab                          NetworkManager           thermald
+fuse.conf                      networks                 timezone
+gai.conf                       newt                     tmpfiles.d
+glvnd                          nsswitch.conf            tomcat9
+groff                          opt                      ucf.conf
+group                          os-release               udev
+group-                         overlayroot.conf         ufw
+grub.d                         ovirt-guest-agent        updatedb.conf
+gshadow                        ovirt-guest-agent.conf   update-manager
+gshadow-                       pam.conf                 update-motd.d
+gss                            pam.d                    update-notifier
+gtk-2.0                        passwd                   vim
+hdparm.conf                    passwd-                  vmware-tools
+host.conf                      perl                     vtrgb
+hostname                       pm                       wgetrc
+hosts                          polkit-1                 X11
+hosts.allow                    pollinate                xdg
+hosts.deny                     popularity-contest.conf  zsh_command_not_found
+init                           profile
+init.d                         profile.d
+setyo@ldap:/etc$ cd
+setyo@ldap:~$ nano /etc/hosts
+setyo@ldap:~$ sudo nano /etc/hosts
+[sudo] password for setyo:
+setyo@ldap:~$ cd /etc/ldap
+setyo@ldap:/etc/ldap$ ls
+ldap.conf  sasl2  schema  slapd.conf  slapd.d
+setyo@ldap:/etc/ldap$ cd /etc/ldaps/sasl2
+-bash: cd: /etc/ldaps/sasl2: No such file or directory
+setyo@ldap:/etc/ldap$ cd /etc/ldap/sasl2
+setyo@ldap:/etc/ldap/sasl2$ ls
+setyo@ldap:/etc/ldap/sasl2$ cd
+setyo@ldap:~$ sudo ufw allow
+ERROR: Invalid syntax
+
+Usage: ufw COMMAND
+
+Commands:
+ enable                          enables the firewall
+ disable                         disables the firewall
+ default ARG                     set default policy
+ logging LEVEL                   set logging to LEVEL
+ allow ARGS                      add allow rule
+ deny ARGS                       add deny rule
+ reject ARGS                     add reject rule
+ limit ARGS                      add limit rule
+ delete RULE|NUM                 delete RULE
+ insert NUM RULE                 insert RULE at NUM
+ route RULE                      add route RULE
+ route delete RULE|NUM           delete route RULE
+ route insert NUM RULE           insert route RULE at NUM
+ reload                          reload firewall
+ reset                           reset firewall
+ status                          show firewall status
+ status numbered                 show firewall status as numbered list of RULES
+ status verbose                  show verbose firewall status
+ show ARG                        show firewall report
+ version                         display version information
+
+Application profile commands:
+ app list                        list application profiles
+ app info PROFILE                show information on PROFILE
+ app update PROFILE              update PROFILE
+ app default ARG                 set default application policy
+
+setyo@ldap:~$ cd /etc/ldap
+setyo@ldap:/etc/ldap$ ls
+ldap.conf  sasl2  schema  slapd.conf  slapd.d
+setyo@ldap:/etc/ldap$ nano /etc/ldap/ldap.conf
+setyo@ldap:/etc/ldap$ cd  /etc/ssl/certs
+setyo@ldap:/etc/ssl/certs$ ls
+ 02265526.0
+ 03179a64.0
+ 062cdee6.0
+ 064e0aa9.0
+ 06dc52d5.0
+ 080911ac.0
+ 09789157.0
+ 0a775a30.0
+ 0b1b94ef.0
+ 0bf05006.0
+ 0c4c9b6c.0
+ 0f5dc4f3.0
+ 0f6fa695.0
+ 1001acf7.0
+ 106f3e4d.0
+ 116bf586.0
+ 14bc7599.0
+ 1636090b.0
+ 18856ac4.0
+ 1d3472b9.0
+ 1e08bfd1.0
+ 1e09d511.0
+ 244b5494.0
+ 2923b3f9.0
+ 2ae6433e.0
+ 2b349938.0
+ 2e5ac55d.0
+ 32888f65.0
+ 349f2832.0
+ 3513523f.0
+ 3bde41ac.0
+ 3e44d2f7.0
+ 3e45d192.0
+ 3fb36b73.0
+ 40193066.0
+ 4042bcee.0
+ 40547a79.0
+ 406c9bb1.0
+ 4304c5e5.0
+ 48bec511.0
+ 4a6481c9.0
+ 4b718d9b.0
+ 4bfab552.0
+ 4f316efb.0
+ 5273a94c.0
+ 5443e9e3.0
+ 54657681.0
+ 57bcb2da.0
+ 5a4d6896.0
+ 5ad8a5d6.0
+ 5cd81ad7.0
+ 5d3033c5.0
+ 5e98733a.0
+ 5f15c80c.0
+ 5f618aec.0
+ 607986c7.0
+ 626dceaf.0
+ 653b494a.0
+ 68dd7389.0
+ 6b99d060.0
+ 6d41d539.0
+ 6fa5da56.0
+ 706f604c.0
+ 749e9e03.0
+ 75d1b2ed.0
+ 76cb8f92.0
+ 76faf6c0.0
+ 7719f463.0
+ 773e07ad.0
+ 7aaf71c0.0
+ 7f3d5d1d.0
+ 8160b96c.0
+ 8cb5ee0f.0
+ 8d86cdd1.0
+ 8d89cda1.0
+ 930ac5d2.0
+ 93bc0acc.0
+ 988a38cb.0
+ 9b5697b0.0
+ 9c2e7d30.0
+ 9c8dfbd4.0
+ 9d04f354.0
+ a3418fda.0
+ a94d09e5.0
+ ACCVRAIZ1.pem
+ AC_RAIZ_FNMT-RCM.pem
+ Actalis_Authentication_Root_CA.pem
+ aee5f10d.0
+ AffirmTrust_Commercial.pem
+ AffirmTrust_Networking.pem
+ AffirmTrust_Premium_ECC.pem
+ AffirmTrust_Premium.pem
+ Amazon_Root_CA_1.pem
+ Amazon_Root_CA_2.pem
+ Amazon_Root_CA_3.pem
+ Amazon_Root_CA_4.pem
+ Atos_TrustedRoot_2011.pem
+ Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem
+ b0e59380.0
+ b1159c4c.0
+ b66938e9.0
+ b727005e.0
+ b7a5b843.0
+ Baltimore_CyberTrust_Root.pem
+ bf53fb88.0
+ Buypass_Class_2_Root_CA.pem
+ Buypass_Class_3_Root_CA.pem
+ c01cdfa2.0
+ c01eb047.0
+ c28a8a30.0
+ c47d9980.0
+ ca6e4ad9.0
+ ca-certificates.crt
+ CA_Disig_Root_R2.pem
+ cbf06781.0
+ cc450945.0
+ cd58d51e.0
+ cd8c0d63.0
+ ce5e74ef.0
+ Certigna.pem
+ Certigna_Root_CA.pem
+ certSIGN_Root_CA_G2.pem
+ certSIGN_ROOT_CA.pem
+ Certum_Trusted_Network_CA_2.pem
+ Certum_Trusted_Network_CA.pem
+ CFCA_EV_ROOT.pem
+ Chambers_of_Commerce_Root_-_2008.pem
+ Comodo_AAA_Services_root.pem
+ COMODO_Certification_Authority.pem
+ COMODO_ECC_Certification_Authority.pem
+ COMODO_RSA_Certification_Authority.pem
+ Cybertrust_Global_Root.pem
+ d4dae3dd.0
+ d6325660.0
+ d7e8dc79.0
+ d853d49e.0
+ d887a5bb.0
+ dc4d6a89.0
+ dd8e9d41.0
+ de6d66f3.0
+ DigiCert_Assured_ID_Root_CA.pem
+ DigiCert_Assured_ID_Root_G2.pem
+ DigiCert_Assured_ID_Root_G3.pem
+ DigiCert_Global_Root_CA.pem
+ DigiCert_Global_Root_G2.pem
+ DigiCert_Global_Root_G3.pem
+ DigiCert_High_Assurance_EV_Root_CA.pem
+ DigiCert_Trusted_Root_G4.pem
+ DST_Root_CA_X3.pem
+ D-TRUST_Root_Class_3_CA_2_2009.pem
+ D-TRUST_Root_Class_3_CA_2_EV_2009.pem
+ e113c810.0
+ e18bfb83.0
+ e36a6752.0
+ e73d606e.0
+ e868b802.0
+ e8de2f56.0
+ EC-ACC.pem
+ ee64a828.0
+ eed8c118.0
+ ef954a4e.0
+ emSign_ECC_Root_CA_-_C3.pem
+ emSign_ECC_Root_CA_-_G3.pem
+ emSign_Root_CA_-_C1.pem
+ emSign_Root_CA_-_G1.pem
+ Entrust.net_Premium_2048_Secure_Server_CA.pem
+ Entrust_Root_Certification_Authority_-_EC1.pem
+ Entrust_Root_Certification_Authority_-_G2.pem
+ Entrust_Root_Certification_Authority_-_G4.pem
+ Entrust_Root_Certification_Authority.pem
+ ePKI_Root_Certification_Authority.pem
+ e-Szigno_Root_CA_2017.pem
+ E-Tugra_Certification_Authority.pem
+ f081611a.0
+ f0c70a8d.0
+ f249de83.0
+ f30dd6ad.0
+ f3377b1b.0
+ f387163d.0
+ f39fc864.0
+ f51bb24c.0
+ fc5a8f99.0
+ fe8a2cd8.0
+ ff34af3f.0
+ GDCA_TrustAUTH_R5_ROOT.pem
+ GeoTrust_Primary_Certification_Authority_-_G2.pem
+ Global_Chambersign_Root_-_2008.pem
+ GlobalSign_ECC_Root_CA_-_R4.pem
+ GlobalSign_ECC_Root_CA_-_R5.pem
+ GlobalSign_Root_CA.pem
+ GlobalSign_Root_CA_-_R2.pem
+ GlobalSign_Root_CA_-_R3.pem
+ GlobalSign_Root_CA_-_R6.pem
+ Go_Daddy_Class_2_CA.pem
+ Go_Daddy_Root_Certificate_Authority_-_G2.pem
+ GTS_Root_R1.pem
+ GTS_Root_R2.pem
+ GTS_Root_R3.pem
+ GTS_Root_R4.pem
+ Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.pem
+ Hellenic_Academic_and_Research_Institutions_RootCA_2011.pem
+ Hellenic_Academic_and_Research_Institutions_RootCA_2015.pem
+ Hongkong_Post_Root_CA_1.pem
+ Hongkong_Post_Root_CA_3.pem
+ IdenTrust_Commercial_Root_CA_1.pem
+ IdenTrust_Public_Sector_Root_CA_1.pem
+ ISRG_Root_X1.pem
+ Izenpe.com.pem
+ java
+ Microsec_e-Szigno_Root_CA_2009.pem
+ Microsoft_ECC_Root_Certificate_Authority_2017.pem
+ Microsoft_RSA_Root_Certificate_Authority_2017.pem
+ NAVER_Global_Root_Certification_Authority.pem
+'NetLock_Arany_=Class_Gold=_Főtanúsítvány.pem'
+ Network_Solutions_Certificate_Authority.pem
+ OISTE_WISeKey_Global_Root_GB_CA.pem
+ OISTE_WISeKey_Global_Root_GC_CA.pem
+ QuoVadis_Root_CA_1_G3.pem
+ QuoVadis_Root_CA_2_G3.pem
+ QuoVadis_Root_CA_2.pem
+ QuoVadis_Root_CA_3_G3.pem
+ QuoVadis_Root_CA_3.pem
+ QuoVadis_Root_CA.pem
+ Secure_Global_CA.pem
+ SecureSign_RootCA11.pem
+ SecureTrust_CA.pem
+ Security_Communication_RootCA2.pem
+ Security_Communication_Root_CA.pem
+ Sonera_Class_2_Root_CA.pem
+ SSL.com_EV_Root_Certification_Authority_ECC.pem
+ SSL.com_EV_Root_Certification_Authority_RSA_R2.pem
+ SSL.com_Root_Certification_Authority_ECC.pem
+ SSL.com_Root_Certification_Authority_RSA.pem
+ Staat_der_Nederlanden_EV_Root_CA.pem
+ Staat_der_Nederlanden_Root_CA_-_G3.pem
+ Starfield_Class_2_CA.pem
+ Starfield_Root_Certificate_Authority_-_G2.pem
+ Starfield_Services_Root_Certificate_Authority_-_G2.pem
+ SwissSign_Gold_CA_-_G2.pem
+ SwissSign_Silver_CA_-_G2.pem
+ SZAFIR_ROOT_CA2.pem
+ TeliaSonera_Root_CA_v1.pem
+ TrustCor_ECA-1.pem
+ TrustCor_RootCert_CA-1.pem
+ TrustCor_RootCert_CA-2.pem
+ Trustis_FPS_Root_CA.pem
+ Trustwave_Global_Certification_Authority.pem
+ Trustwave_Global_ECC_P256_Certification_Authority.pem
+ Trustwave_Global_ECC_P384_Certification_Authority.pem
+ T-TeleSec_GlobalRoot_Class_2.pem
+ T-TeleSec_GlobalRoot_Class_3.pem
+ TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem
+ TWCA_Global_Root_CA.pem
+ TWCA_Root_Certification_Authority.pem
+ UCA_Extended_Validation_Root.pem
+ UCA_Global_G2_Root.pem
+ USERTrust_ECC_Certification_Authority.pem
+ USERTrust_RSA_Certification_Authority.pem
+ VeriSign_Universal_Root_Certification_Authority.pem
+ XRamp_Global_CA_Root.pem
+setyo@ldap:/etc/ssl/certs$ cd
+setyo@ldap:~$ nano /etc/ldap/ldap.conf
+setyo@ldap:~$ nano /etc/ldap/ldap.conf
+setyo@ldap:~$ sudo nano /etc/ldap/ldap.conf
+[sudo] password for setyo:
+setyo@ldap:~$ sudo slaptest -f /etc/ldap/slapd.conf
+6040c079 /etc/ldap/slapd.conf: line 98: rootdn is always granted unlimited privileges.
+6040c079 /etc/ldap/slapd.conf: line 115: rootdn is always granted unlimited privileges.
+config file testing succeeded
+setyo@ldap:~$ sudo nano /etc/ldap/slapd.conf
+setyo@ldap:~$ nano /etc/default/slapd
+setyo@ldap:~$ cd /etc/ldap/sasl2
+setyo@ldap:/etc/ldap/sasl2$ ls
+setyo@ldap:/etc/ldap/sasl2$
+setyo@ldap:/etc/ldap/sasl2$ sudo openssl genrsa -aes128 -out server.key
+Generating RSA private key, 2048 bit long modulus (2 primes)
+...........................................+++++
+...............................................+++++
+e is 65537 (0x010001)
+Enter pass phrase for server.key:
+Verifying - Enter pass phrase for server.key:
+setyo@ldap:/etc/ldap/sasl2$
+setyo@ldap:/etc/ldap/sasl2$ sudo openssl req -new -days 3650 -key server.key -out server.csr
+Ignoring -days; not generating a certificate
+Enter pass phrase for server.key:
+Can't load /home/setyo/.rnd into RNG
+139858920141248:error:2406F079:random number generator:RAND_load_file:Cannot open file:../crypto/rand/randfile.c:88:Filename=/home/setyo/.rnd
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:ID
+State or Province Name (full name) [Some-State]:Jakarta
+Locality Name (eg, city) []:Jakarta
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Polstat STIS
+Organizational Unit Name (eg, section) []:STIS
+Common Name (e.g. server FQDN or YOUR name) []:ldap.ldpastis.com
+Email Address []:
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+setyo@ldap:/etc/ldap/sasl2$ nano /etc/hosts
+setyo@ldap:/etc/ldap/sasl2$ sudo openssl x509 -in server.csr -out server.crt -req -signkey server.key -days 3650
+Signature ok
+subject=C = ID, ST = Jakarta, L = Jakarta, O = Polstat STIS, OU = STIS, CN = ldap.ldpastis.com
+Getting Private key
+Enter pass phrase for server.key:
+setyo@ldap:/etc/ldap/sasl2$ cd
+setyo@ldap:~$ sudo slaptest -f /etc/ldap/slapd.conf
+6040c246 /etc/ldap/slapd.conf: line 98: rootdn is always granted unlimited privileges.
+6040c246 /etc/ldap/slapd.conf: line 115: rootdn is always granted unlimited privileges.
+config file testing succeeded
+setyo@ldap:~$ cd/etc/ldap/
+-bash: cd/etc/ldap/: No such file or directory
+setyo@ldap:~$ cd /etc/ldap/
+setyo@ldap:/etc/ldap$ ls
+ldap.conf  sasl2  schema  slapd.conf  slapd.d
+setyo@ldap:/etc/ldap$ cd /etc/ldap/sasl2
+setyo@ldap:/etc/ldap/sasl2$ ls
+server.crt  server.csr  server.key
+setyo@ldap:/etc/ldap/sasl2$ cd
+setyo@ldap:~$ slapcat
+6040c2f1 ldif_read_file: Permission denied for "/etc/ldap/slapd.d/cn=config.ldif"
+slapcat: bad configuration file!
+setyo@ldap:~$ sudo slapcat
+dn: dc=ldapstis,dc=com
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+o: Polstat STIS
+dc: ldapstis
+structuralObjectClass: organization
+entryUUID: a6def6d4-10fe-103b-9149-c1329e2d8578
+creatorsName: cn=admin,dc=ldapstis,dc=com
+createTimestamp: 20210304062900Z
+entryCSN: 20210304062900.829629Z#000000#000#000000
+modifiersName: cn=admin,dc=ldapstis,dc=com
+modifyTimestamp: 20210304062900Z
+
+dn: cn=admin,dc=ldapstis,dc=com
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+description: LDAP administrator
+userPassword:: e1NTSEF9dlF4VS9EY0lNYUNuVnA0cS9sRDdjSjVxSU9HSjhySjE=
+structuralObjectClass: organizationalRole
+entryUUID: a6e0e174-10fe-103b-914a-c1329e2d8578
+creatorsName: cn=admin,dc=ldapstis,dc=com
+createTimestamp: 20210304062900Z
+entryCSN: 20210304062900.842189Z#000000#000#000000
+modifiersName: cn=admin,dc=ldapstis,dc=com
+modifyTimestamp: 20210304062900Z
+
+setyo@ldap:~$
